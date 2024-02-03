@@ -4,6 +4,9 @@
     "password": "uYoVxgTCqTSSznn2FxywRKwLNfT4E3oq",
     "database": "dbebrat",
     "host": "dpg-cmtj1t8l6cac73b06jog-a.ohio-postgres.render.com",
+    "dialectOptions": {
+      "ssl": true
+    },
     "dialect": "postgres"
   },
   "test": {
