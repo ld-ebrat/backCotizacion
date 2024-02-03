@@ -1,14 +1,17 @@
 {
   "development": {
-    "username": "ebratpostgres",
-    "password": "uYoVxgTCqTSSznn2FxywRKwLNfT4E3oq",
-    "database": "dbebrat",
-    "host": "dpg-cmtj1t8l6cac73b06jog-a.ohio-postgres.render.com",
+    "username": "ld-ebrat",
+    "password": "HiguyS81czRf",
+    "database": "neondb",
+    "host": "ep-old-term-a5e6f6lg.us-east-2.aws.neon.tech",
     "dialectOptions": {
       "ssl": {
         "require": true,
         "rejectUnauthorized": false
       }
+    },
+    "connection": {
+      "options" : "project=ep-old-term-a5e6f6lg"
     },
     "dialect": "postgres"
   },
