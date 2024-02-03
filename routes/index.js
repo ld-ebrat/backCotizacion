@@ -2,13 +2,13 @@ const setState = require("./setState");
 const setStateCity = require("./setStateCity");
 const stateRoutes = require("./stateRoutes");
 const cityRoutes = require("./cityRoutes");
-const userRoutes = require("./userRoutes")
 const imgRoutes = require("./imgRoutes")
 const productRoutes = require("./productsRoutes")
 const clientRoutes = require("./clientRoutes")
 const quotationRoutes = require("./quotationRoutes")
 const quotationProductRoutes = require("./quotationProductRoutes")
 const emailRoutes = require("./emails")
+const userRoutes = require("./userRoutes")
 
 
 module.exports = (app)=>{

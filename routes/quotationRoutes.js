@@ -3,7 +3,6 @@ const router = Express.Router()
 const { Quotation } = require("../models")
 
 router.post("/create/quotation", async (req, res)=>{
-
     try {
         const quotation = await Quotation.create({
             UserId: req.body.userId,

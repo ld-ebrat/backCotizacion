@@ -101,7 +101,8 @@ router.post("/singup", async (req, res) => {
     }
 })
 
-router.post("/login", async (req, res) =>{
+router.post("/login", async (req,res) =>{
+    console.log(req.body)
     try {
         const user = await User.findOne({
             where: {
@@ -124,6 +125,7 @@ router.post("/login", async (req, res) =>{
             res.json({message: "Correo Incorrecto o no Existe"})
         }
     } catch (error) {
+        console.log(error)
         res.json({message: error})
     }
 })

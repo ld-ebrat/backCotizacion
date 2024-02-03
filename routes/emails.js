@@ -2,8 +2,6 @@ const Express = require("express");
 const router = Express.Router();
 const nodemailer = require("nodemailer")
 const { render } = require("@react-email/render");
-const dotenv = require("dotenv")
-dotenv.config()
 
 router.post("/send/email", async (req, res) => {
     console.log("Email: ", req.body)
