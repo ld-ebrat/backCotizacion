@@ -124,7 +124,7 @@ router.post("/login", async (req, res) =>{
             res.json({message: "Correo Incorrecto o no Existe"})
         }
     } catch (error) {
-        res.json({"error": error})
+        res.json({message: error})
     }
 })
 
