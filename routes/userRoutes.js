@@ -24,9 +24,9 @@ async function auth(req, res, next) {
 router.get("/get-infoUser", auth, async (req, res) => {
     if(req.user){
         const user = req.user
-        res.status(200).json(user)
+        res.json(user)
     }else{
-        res.status(500).json({error: "Error"})
+        res.json({error: "Error"})
     }
 })
 
@@ -35,6 +35,20 @@ router.get("/get-all-user", async (req, res) => {
         attributes: { exclude: ['password'] }
     })
     res.json(user)
+})
+
+router.post("/getUsers", async (req,res)=>{
+    console.log(req.body)
+    try {
+        const users = await User.findAll({
+            where:{
+                role : req.body.role
+            }
+        })
+        res.json(users)
+    } catch (error) {
+        res.json({"Erro": error})
+    }
 })
 
 router.post("/getInfo", async (req,res)=>{
@@ -88,8 +102,6 @@ router.post("/singup", async (req, res) => {
 })
 
 router.post("/login", async (req, res) =>{
-
-    console.log(req.body)
     try {
         const user = await User.findOne({
             where: {
@@ -98,21 +110,21 @@ router.post("/login", async (req, res) =>{
         })
 
         if(user !== null){
-            console.log("Entre")
             if(user.password === req.body.pass){
-                console.log("Entre aca")
                 const token = jwt.sign({id: user.id}, "@Ebrat182529", {expiresIn : "180000s"})
+
+                if(user.role === "ADMIN"){
+                    res.json({token, id: user.id, message: "OK", type:true})
+                }
                 res.json({token, id: user.id, message: "OK"})
             }else{
-                console.log("Entre mas bien aca")
                 res.json({message: "Contraseña Incorrecta"})
             }
         }else{
-            console.log("Entre en otro lado")
             res.json({message: "Correo Incorrecto o no Existe"})
         }
     } catch (error) {
-        
+        res.json({"error": error})
     }
 })
 
