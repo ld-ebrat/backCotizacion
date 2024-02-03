@@ -15,6 +15,7 @@
     },
     "dialect": "postgres"
   },
+  
   "test": {
     "username": "root",
     "password": null,

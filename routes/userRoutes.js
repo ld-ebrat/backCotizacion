@@ -32,13 +32,15 @@ router.get("/get-infoUser", auth, async (req, res) => {
 
 router.get("/get-all-user", async (req, res) => {
     const user = await User.findAll({
-        attributes: { exclude: ['password'] }
+        where: {
+            role: "USER"
+        },
+        attributes: { exclude: ['password', "email", "phone"] }
     })
     res.json(user)
 })
 
 router.post("/getUsers", async (req,res)=>{
-    console.log(req.body)
     try {
         const users = await User.findAll({
             where:{
@@ -53,8 +55,6 @@ router.post("/getUsers", async (req,res)=>{
 
 router.post("/getInfo", async (req,res)=>{
 
-    console.log(req.body)
-
     const user = await User.findOne({
         where: {
             id : req.body.userId
@@ -62,8 +62,6 @@ router.post("/getInfo", async (req,res)=>{
         attributes: { exclude: ['password'] },
         include: "City"
     })
-
-    console.log("User ",user)
     res.status(200).json(user)
 })
 

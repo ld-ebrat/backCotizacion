@@ -4,7 +4,6 @@ const nodemailer = require("nodemailer")
 const { render } = require("@react-email/render");
 
 router.post("/send/email", async (req, res) => {
-    console.log("Email: ", req.body)
     try {
         let transport = nodemailer.createTransport({
             host: process.env.SMTP_AUTH_HOST,

@@ -36,8 +36,6 @@ router.post("/create/state", async (req, res) => {
                     })
                 })
                 console.log("\nElementos guardados Correctamente")
-                console.log(Date.now())
-                console.log(Date.now().toString())
                 res.send(dataState)
             }
         } catch (error) {
