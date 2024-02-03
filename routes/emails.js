@@ -31,7 +31,7 @@ router.post("/send/email", async (req, res) => {
         try {
             await transport.sendMail({
                 subject: "Probando ",
-                to: "angaritaheiner@gmail.com",
+                to: req.body.email,
                 html
             })
             res.json({ message: true })
