@@ -6,7 +6,7 @@
     "host": "dpg-cmtj1t8l6cac73b06jog-a.ohio-postgres.render.com",
     "dialectOptions": {
       "ssl": {
-        "require": true
+        "require": false
       }
     },
     "dialect": "postgres"
