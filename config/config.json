@@ -1,0 +1,28 @@
+{
+  "development": {
+    "username": "ebratpostgres",
+    "password": "uYoVxgTCqTSSznn2FxywRKwLNfT4E3oq",
+    "database": "dbebrat",
+    "host": "dpg-cmtj1t8l6cac73b06jog-a.ohio-postgres.render.com",
+    "dialectOptions": {
+      "ssl": {
+        "require": true
+      }
+    },
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "ebratpostgres",
+    "password": "uYoVxgTCqTSSznn2FxywRKwLNfT4E3oq",
+    "database": "dbebrat",
+    "host": "dpg-cmtj1t8l6cac73b06jog-a",
+    "dialect": "postgres"
+  }
+}
