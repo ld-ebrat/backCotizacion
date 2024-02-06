@@ -7,7 +7,12 @@ dotenv.config()
 // const UserRouter = require("./routes/userRoutes.js")
 const routes = require("./routes/index.js")
 
-app.use(cors({origin: "*"}))
+const corsOptions = {
+    origin: '*',
+    methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}
+app.use(cors(corsOptions))
 app.use(Express.json())
 app.use('/images', Express.static(path.join(__dirname, 'images')));
 routes(app)

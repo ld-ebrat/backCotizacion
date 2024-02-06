@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 async function auth(req, res, next) {
     try {
         console.log("Entre aca, en este lado")
-        let token = req.headers['authorization'];
+        let token = req.headers['Authorization'];
         let resultadoToken = jwt.verify(token, '@Ebrat182529');
 
         let usuario = await User.findOne({
