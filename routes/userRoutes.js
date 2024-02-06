@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 
 async function auth(req, res, next) {
     try {
+        console.log("Entre aca, en este lado")
         let token = req.headers['authorization'];
         let resultadoToken = jwt.verify(token, '@Ebrat182529');
 
@@ -18,14 +19,22 @@ async function auth(req, res, next) {
         next();
     } catch (err) {
         console.log("Error al realizar la autenticacion")
+        res.send(err)
+        
     }
 }
 
+router.get("/getAuthUser", async (req,res)=>{
+    console.log("Entre bie bien")
+})
 router.get("/get-infoUser", auth, async (req, res) => {
+    console.log("\nEste es el body", req.user)
+    console.log("tamben aca entre")
     if(req.user){
         const user = req.user
         res.json(user)
     }else{
+        console.log("Mas bien entre por este lado")
         res.json({error: "Error"})
     }
 })
@@ -40,13 +49,9 @@ router.get("/get-all-user", async (req, res) => {
     res.json(user)
 })
 
-router.post("/getUsers", async (req,res)=>{
+router.get("/getUsers", async (req,res)=>{
     try {
-        const users = await User.findAll({
-            where:{
-                role : req.body.role
-            }
-        })
+        const users = await User.findAll()
         res.json(users)
     } catch (error) {
         res.json({"Erro": error})

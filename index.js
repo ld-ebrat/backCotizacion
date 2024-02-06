@@ -9,8 +9,8 @@ const routes = require("./routes/index.js")
 
 app.use(cors({origin: "*"}))
 app.use(Express.json())
-routes(app)
 app.use('/images', Express.static(path.join(__dirname, 'images')));
+routes(app)
 
 
 app.get("/", (req,res) =>{
