@@ -19,7 +19,7 @@ async function auth(req, res, next) {
         next();
     } catch (err) {
         console.log("Error al realizar la autenticacion")
-        res.send(err)
+        req.err = err
         
     }
 }
@@ -35,7 +35,7 @@ router.get("/get-infoUser", auth, async (req, res) => {
         res.json(user)
     }else{
         console.log("Mas bien entre por este lado")
-        res.json({error: "Error"})
+        res.json({error: res.err})
     }
 })
 
