@@ -7,12 +7,13 @@ dotenv.config()
 // const UserRouter = require("./routes/userRoutes.js")
 const routes = require("./routes/index.js")
 
-const corsOptions = {
-    origin: '*',
-    methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization','Origin','Access-Control-Allow-Origin','Accept','Options','X-Requested-With']
-}
-app.use(cors(corsOptions))
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://front-cotizacion.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+  });
 app.use(Express.json())
 app.use('/images', Express.static(path.join(__dirname, 'images')));
 routes(app)
