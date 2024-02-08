@@ -4,8 +4,13 @@
     "password": "VKE4okX0HYZx",
     "database": "verceldb",
     "host": "ep-billowing-king-a43sbh5k-pooler.us-east-1.aws.neon.tech",
-    "dialect": "postgres",
-    "dialectModule": "pg"
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "dialect": "postgres"
   },
   
   "test": {
