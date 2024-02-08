@@ -1,15 +1,9 @@
 {
   "development": {
-    "username": "ebrat",
-    "password": "qvjJnGJMU5YqaWygn5XHqwKM7Enq6xWo",
-    "database": "dbquotation_48s0",
-    "host": "dpg-cn0r4lv109ks73ca5tcg-a.oregon-postgres.render.com",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      }
-    },
+    "username": "default",
+    "password": "VKE4okX0HYZx",
+    "database": "verceldb",
+    "host": "ep-billowing-king-a43sbh5k-pooler.us-east-1.aws.neon.tech",
     "dialect": "postgres",
     "dialectModule": "pg"
   },
@@ -26,6 +20,12 @@
     "password": "qvjJnGJMU5YqaWygn5XHqwKM7Enq6xWo",
     "database": "dbquotation_48s0",
     "host": "dpg-cn0r4lv109ks73ca5tcg-a.oregon-postgres.render.com",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
     "dialect": "postgres"
   }
 }
