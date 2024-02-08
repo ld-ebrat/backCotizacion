@@ -11,16 +11,16 @@ router.post("/save/img/profile", async (req, res) => {
     const user = req.body.user.split("@")[0]
     const extension = file.name.split(".")[file.name.split(".").length - 1]
 
-    if (!fs.existsSync('./images')) {
-        fs.mkdirSync('./images', { recursive: true });
+    if (!fs.existsSync('./imag')) {
+        fs.mkdirSync('./imag/', { recursive: true });
     }
-    fs.mkdirSync(`./images/${user}/`, { recursive: true });
+    fs.mkdirSync(`./imag/${user}/`, { recursive: true });
 
-    file.mv(`./images/${user}/profile.${extension}`, function (err) {
+    file.mv(`./imag/${user}/profile.${extension}`, function (err) {
         if(err){
             res.json(err)
         }else{
-            res.json({url:`/images/${user}/profile.${extension}`})
+            res.json({url:`/imag/${user}/profile.${extension}`})
         }
     })
 
@@ -32,9 +32,9 @@ router.post("/save/img/product", async (req, res) => {
     const user = req.body.email.split("@")[0]
     const name = req.body.name
     const extension = file.name.split(".")[file.name.split(".").length - 1]
-    const directory = `/images/${user}/product/${Date.now()}_${name}.${extension}`
+    const directory = `/imag/${user}/product/${Date.now()}_${name}.${extension}`
 
-    fs.mkdirSync(`./images/${user}/product`, { recursive: true });
+    fs.mkdirSync(`./imag/${user}/product`, { recursive: true });
 
     file.mv(`.${directory}`, function (err) {
         if(err){
@@ -52,7 +52,7 @@ router.post("/update/img/product", async (req, res) =>{
     const name = req.body.name
     const extension = file.name.split(".")[file.name.split(".").length - 1]
     const urlImgDelete = req.body.imgDelete
-    const directory = `/images/${user}/product/${Date.now()}_${name}.${extension}`
+    const directory = `/imag/${user}/product/${Date.now()}_${name}.${extension}`
 
     fs.unlink(`.${urlImgDelete}`, (err)=>{
         if(err){
@@ -76,12 +76,12 @@ router.post("/rename/dir/profile", async (req,res)=>{
     const extension =req.body.url.split(".").at(-1)
     console.log(extension)
     const dirRename = req.body.dirRename.split("@")[0]
-    fs.rename(`./images/${dir}`,`./images/${dirRename}`, (err)=>{
+    fs.rename(`./imag/${dir}`,`./imag/${dirRename}`, (err)=>{
         if(err){
             console.log(err)
             res.json({err})
         }else{
-            res.json({url: `/images/${dirRename}/profile.${extension}`, message: "OK"})
+            res.json({url: `/imag/${dirRename}/profile.${extension}`, message: "OK"})
         }
     })
 
@@ -98,18 +98,18 @@ router.put("/update/img/profile", async (req, res) => {
         console.log(userdelete)
 
         
-        fs.unlink(`./images/${userdelete}/`, (err)=>{
+        fs.unlink(`./imag/${userdelete}/`, (err)=>{
             if(err){
                 console.log("Entre aqui", err)
                 res.json({message: "Error al actualizar la imagen"})
             }else{
                 console.log("No, entre por aca")
-                fs.mkdirSync(`./images/${user}/`, { recursive: true });
-                file.mv(`./images/${user}/profile.${extension}`, (err) => {
+                fs.mkdirSync(`./imag/${user}/`, { recursive: true });
+                file.mv(`./imag/${user}/profile.${extension}`, (err) => {
                     if(err){
                         res.json({message: "Error al guardar la imagen"})
                     }else{
-                        res.json({url:`/images/${user}/profile.${extension}`, message: "OK"})
+                        res.json({url:`/imag/${user}/profile.${extension}`, message: "OK"})
                     }
                 })
             }
@@ -120,11 +120,11 @@ router.put("/update/img/profile", async (req, res) => {
             if(err){
                 res.json({message: "Error al actualizar la imagen"})
             }else{
-                file.mv(`./images/${user}/profile.${extension}`, (err) => {
+                file.mv(`./imag/${user}/profile.${extension}`, (err) => {
                     if(err){
                         res.json({message: "Error al guardar la imagen"})
                     }else{
-                        res.json({url:`/images/${user}/profile.${extension}`, message: "OK"})
+                        res.json({url:`/imag/${user}/profile.${extension}`, message: "OK"})
                     }
                 })
             }
