@@ -10,7 +10,8 @@
         "rejectUnauthorized": false
       }
     },
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "dialectModule": "pg"
   },
   
   "test": {
