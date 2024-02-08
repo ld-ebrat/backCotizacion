@@ -21,7 +21,7 @@ app.options('/login', function (req, res) {
 });
 app.use(cors(corsOptions))
 app.use(Express.json())
-app.use('/imag', Express.static(path.join(__dirname, 'imag')));
+app.use('/images', Express.static(path.join(__dirname, 'images')));
 routes(app)
 
 
