@@ -24,5 +24,5 @@ app.get("/", (req,res) =>{
 })
 
 app.listen(port, ()=>{
-    console.log("Corriendo en el puesto 4000")
+    console.log(`Corriendo en el puesto ${port}`)
 })
