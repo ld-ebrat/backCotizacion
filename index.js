@@ -6,6 +6,8 @@ const dotenv = require("dotenv")
 dotenv.config()
 const routes = require("./routes/index.js")
 
+const port = process.env.PORT || 4000
+
 const corsOptions = {
     origin: '*',
     methods: ['POST', 'GET', 'PATCH', 'DELETE', "OPTIONS", "PUT"],
@@ -21,6 +23,6 @@ app.get("/", (req,res) =>{
     res.send("Hola")
 })
 
-app.listen(4000, ()=>{
+app.listen(port, ()=>{
     console.log("Corriendo en el puesto 4000")
 })
