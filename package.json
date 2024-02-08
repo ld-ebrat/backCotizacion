@@ -20,6 +20,7 @@
     "express-fileupload": "^1.4.3",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.9",
-    "react-hook-form": "^7.50.0"
+    "react-hook-form": "^7.50.0",
+    "sequelize": "^6.36.0"
   }
 }
