@@ -5,10 +5,8 @@ const jwt = require("jsonwebtoken");
 
 async function auth(req, res, next) {
     try {
-        console.log("Entre aca, en este lado")
-        let token = req.headers['Authorization'];
+        let token = req.headers['authorization'];
         let resultadoToken = jwt.verify(token, '@Ebrat182529');
-
         let usuario = await User.findOne({
             where: {
                 id: resultadoToken.id
@@ -18,24 +16,16 @@ async function auth(req, res, next) {
         req.user = usuario;
         next();
     } catch (err) {
-        console.log("Error al realizar la autenticacion")
         req.err = err
-        
     }
 }
 
-router.get("/getAuthUser", async (req,res)=>{
-    console.log("Entre bie bien")
-})
 router.get("/get-infoUser", auth, async (req, res) => {
-    console.log("\nEste es el body", req.user)
-    console.log("tamben aca entre")
     if(req.user){
         const user = req.user
         res.json(user)
     }else{
-        console.log("Mas bien entre por este lado")
-        res.json({error: res.err})
+        res.json({error: req.err})
     }
 })
 
@@ -51,7 +41,9 @@ router.get("/get-all-user", async (req, res) => {
 
 router.get("/getUsers", async (req,res)=>{
     try {
-        const users = await User.findAll()
+        const users = await User.findAll({
+            include: "City"
+        })
         res.json(users)
     } catch (error) {
         res.json({"Erro": error})
@@ -71,6 +63,7 @@ router.post("/getInfo", async (req,res)=>{
 })
 
 router.post("/validateUser", async (req, res) => {
+    console.log("Validacion", req.body)
     try {
         const user = await User.findOne({
             where: {
@@ -83,6 +76,27 @@ router.post("/validateUser", async (req, res) => {
         res.json(error)
     }
 })
+
+router.post("/create/user", async (req, res)=>{
+    console.log("Create", req.body)
+    try {
+        const user = await User.create({
+            CityId: req.body.user.CityId,
+            fullname: req.body.user.name,//
+            email: req.body.user.email, //
+            password: req.body.user.pass, //
+            phone: req.body.user.phone, //
+            address: req.body.user.address, //
+            description: req.body.user.description,//
+            imag: req.body.urlImg,
+            role: req.body.user.role
+        })
+        res.json(user)
+    } catch (error) {
+        res.json({"error": error})
+    }
+})
+
 router.post("/singup", async (req, res) => {
     try {
         const user = await User.create({
@@ -119,8 +133,9 @@ router.post("/login", async (req,res) =>{
 
                 if(user.role === "ADMIN"){
                     res.json({token, id: user.id, message: "OK", type:true})
+                }else{
+                    res.json({token, id: user.id, message: "OK"})
                 }
-                res.json({token, id: user.id, message: "OK"})
             }else{
                 res.json({message: "Contraseña Incorrecta"})
             }
@@ -130,6 +145,32 @@ router.post("/login", async (req,res) =>{
     } catch (error) {
         console.log(error)
         res.json({message: error})
+    }
+})
+
+router.put("/update/user", async (req, res)=>{
+    console.log("Update User ",req.body)
+    try {
+        const user = await User.update({
+            CityId: req.body.user.CityId,
+            fullname: req.body.user.name,//
+            email: req.body.user.email, //
+            password: req.body.user.pass, //
+            phone: req.body.user.phone, //
+            address: req.body.user.address, //
+            description: req.body.user.description,//
+            imag: req.body.urlImg,
+            role: req.body.user.role
+        },{
+            where:{
+                id: req.body.user.id
+            }
+        })
+
+        res.json(user)
+    } catch (error) {
+        console.log(error)
+        res.json({"Error": error})
     }
 })
 

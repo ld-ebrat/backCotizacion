@@ -25,12 +25,6 @@
     "password": "qvjJnGJMU5YqaWygn5XHqwKM7Enq6xWo",
     "database": "dbquotation_48s0",
     "host": "dpg-cn0r4lv109ks73ca5tcg-a.oregon-postgres.render.com",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      }
-    },
     "dialect": "postgres"
   }
 }
