@@ -11,6 +11,9 @@ router.post("/save/img/profile", async (req, res) => {
     const user = req.body.user.split("@")[0]
     const extension = file.name.split(".")[file.name.split(".").length - 1]
 
+    if (!fs.existsSync('./images')) {
+        fs.mkdirSync('./images', { recursive: true });
+    }
     fs.mkdirSync(`./images/${user}/`, { recursive: true });
 
     file.mv(`./images/${user}/profile.${extension}`, function (err) {
