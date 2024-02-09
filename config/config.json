@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "default",
-    "password": "5Kse6auYjvcQ",
+    "password": "4lM7ArhWJFuy",
     "database": "verceldb",
-    "host": "ep-billowing-king-a43sbh5k-pooler.us-east-1.aws.neon.tech",
+    "host": "ep-fragrant-dream-a4mni3nv.us-east-1.aws.neon.tech",
     "dialectOptions": {
       "ssl": {
         "require": true,
