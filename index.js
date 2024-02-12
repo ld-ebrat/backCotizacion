@@ -9,12 +9,12 @@ const routes = require("./routes/index.js")
 const port = process.env.PORT || 4000
 
 const corsOptions = {
-    origin: 'https://front-cotizacion.vercel.app',
+    origin: '*',
     methods: ['POST', 'GET', 'PATCH', 'DELETE', "OPTIONS", "PUT"],
     allowedHeaders: ['Content-Type', 'authorization','Authorization', "X-Powered-By", "Access-Control-Allow-Origin"]
 }
 app.options('/login', function (req, res) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://front-cotizacion.vercel.app');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.end();

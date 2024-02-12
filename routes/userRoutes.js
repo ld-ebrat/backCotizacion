@@ -91,7 +91,7 @@ router.post("/create/user", async (req, res)=>{
             imag: req.body.urlImg,
             role: req.body.user.role
         })
-        res.json(user)
+        res.json({user: user, message: "OK"})
     } catch (error) {
         res.json({"error": error})
     }
@@ -167,7 +167,7 @@ router.put("/update/user", async (req, res)=>{
             }
         })
 
-        res.json(user)
+        res.json({user, message: "OK"})
     } catch (error) {
         console.log(error)
         res.json({"Error": error})
