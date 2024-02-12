@@ -13,6 +13,7 @@ const corsOptions = {
     methods: ['POST', 'GET', 'PATCH', 'DELETE', "OPTIONS", "PUT"],
     allowedHeaders: ['Content-Type', 'authorization','Authorization', "X-Powered-By", "Access-Control-Allow-Origin"]
 }
+
 app.options('/login', function (req, res) {
     res.setHeader('Access-Control-Allow-Origin', 'https://front-cotizacion.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
